@@ -58,3 +58,52 @@ def salariesAverage():
     Accounting_average = Accounting_average / Accounting_count
 
     return [Admin_average, IT_average, HR_average, Sales_average, Accounting_average]
+
+
+def sectionsSummary():
+    Admin_male = 0; Admin_female = 0
+    IT_male = 0; IT_female = 0
+    HR_male = 0; HR_female = 0
+    Sales_male = 0; Sales_female = 0
+    Accounting_male = 0; Accounting_female = 0
+
+    for employee in Employees:
+        if employee.section == "Admin":
+            if employee.male is True:
+                Admin_male += 1
+            else:
+                Admin_female += 1
+
+        elif employee.section == "IT":
+            if employee.male is True:
+                IT_male += 1
+            else:
+                IT_female += 1
+
+        elif employee.section == "HR":
+            if employee.male is True:
+                HR_male += 1
+            else:
+                HR_female += 1
+
+        elif employee.section == "Sales":
+            if employee.male is True:
+                Sales_male += 1
+            else:
+                Sales_female += 1
+
+        else:
+            #Accounting
+            if employee.male is True:
+                Accounting_male += 1
+            else:
+                Accounting_female += 1
+    
+    #tuples for each section: numbers of males, numbers of females, number of employees per section
+    Admin = (Admin_male, Admin_female, Admin_male+Admin_female)
+    IT = (IT_male, IT_female, IT_male+IT_female)
+    HR = (HR_male, HR_female, HR_male+HR_female)
+    Sales = (Sales_male, Sales_female, Sales_male+Sales_female)
+    Accounting = (Accounting_male, Accounting_female, Accounting_male+Accounting_female)
+
+    return [Admin, IT, HR, Sales, Accounting]
