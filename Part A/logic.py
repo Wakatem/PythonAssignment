@@ -22,3 +22,39 @@ Employees = [
     Employee("Jazlyn", 446839, 65000, "Sales", 75, False)
 ]
 
+def salariesAverage():
+    Admin_average = 0; Admin_count = 0
+    IT_average = 0; IT_count = 0
+    HR_average = 0; HR_count = 0
+    Sales_average = 0; Sales_count = 0
+    Accounting_average = 0; Accounting_count = 0
+
+    for employee in Employees:
+        if employee.section == "Admin":
+            Admin_average += employee.salary
+            Admin_count += 1
+
+        elif employee.section == "IT":
+            IT_average += employee.salary
+            IT_count += 1
+
+        elif employee.section == "HR":
+            HR_average += employee.salary
+            HR_count += 1
+
+        elif employee.section == "Sales":
+            Sales_average += employee.salary
+            Sales_count += 1
+
+        else:
+            #Accounting
+            Accounting_average = employee.salary
+            Accounting_count += 1
+    
+    Admin_average = Admin_average / Admin_count
+    IT_average = IT_average / IT_count
+    HR_average = HR_average / HR_count
+    Sales_average = Sales_average / Sales_count
+    Accounting_average = Accounting_average / Accounting_count
+
+    return [Admin_average, IT_average, HR_average, Sales_average, Accounting_average]
