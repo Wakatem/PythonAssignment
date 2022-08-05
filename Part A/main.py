@@ -11,11 +11,20 @@ def displaySalariesAVG():
 
 def displaySummary():
     Admin, IT, HR, Sales, Accounting = logic.sectionsSummary()
+    averages = logic.salariesAverage()
+    sectionsAverage = 0
+    for average in averages:
+        sectionsAverage += average
+    sectionsAverage = int(sectionsAverage / len(averages))
+
     print("\t\tAdmin\t|\tIT\t|\tHR\t|\tSales\t|\tAccounting")
     print("NO of Males\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[0], IT[0], HR[0], Sales[0], Accounting[0]))
     print("NO of Females\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[1], IT[1], HR[1], Sales[1], Accounting[1]))
+    print("Salary Average\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(averages[0], averages[1], averages[2], averages[3], averages[4]))
     print("Total Employees\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[2], IT[2], HR[2], Sales[2], Accounting[2]))
-    print("Salary Average\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[2], IT[2], HR[2], Sales[2], Accounting[2]))
+    print("Total company employees:", str(Admin[2]+IT[2]+HR[2]+Sales[2]+Accounting[2]))
+    print("Total average of sections salaries:", str(sectionsAverage))
+
 
 
 option = 0
@@ -23,7 +32,7 @@ option = 0
 while option is not 6:
     print("\n\n=======================================")
     print("Select an option: ")
-    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. Change employee's salary\n\t4. Change employee's section\n\t5. Salaries averagecls\n\t6. Sections summary\n\t7. Exit")
+    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. Change employee's salary\n\t4. Change employee's section\n\t5. Salaries average\n\t6. Sections summary\n\t7. Exit")
     print("=======================================")
     option = int(input("input: "))
     
