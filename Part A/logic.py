@@ -22,93 +22,6 @@ Employees = [
     Employee("Jazlyn", 446839, 65000, "Sales", 75, False)
 ]
 
-def salariesAverage():
-    Admin_average = 0; Admin_count = 0
-    IT_average = 0; IT_count = 0
-    HR_average = 0; HR_count = 0
-    Sales_average = 0; Sales_count = 0
-    Accounting_average = 0; Accounting_count = 0
-
-    for employee in Employees:
-        if employee.section == "Admin":
-            Admin_average += employee.salary
-            Admin_count += 1
-
-        elif employee.section == "IT":
-            IT_average += employee.salary
-            IT_count += 1
-
-        elif employee.section == "HR":
-            HR_average += employee.salary
-            HR_count += 1
-
-        elif employee.section == "Sales":
-            Sales_average += employee.salary
-            Sales_count += 1
-
-        else:
-            #Accounting
-            Accounting_average = employee.salary
-            Accounting_count += 1
-    
-    Admin_average = Admin_average / Admin_count
-    IT_average = IT_average / IT_count
-    HR_average = HR_average / HR_count
-    Sales_average = Sales_average / Sales_count
-    Accounting_average = Accounting_average / Accounting_count
-
-    return [Admin_average, IT_average, HR_average, Sales_average, Accounting_average]
-
-
-def sectionsSummary():
-    Admin_male = 0; Admin_female = 0
-    IT_male = 0; IT_female = 0
-    HR_male = 0; HR_female = 0
-    Sales_male = 0; Sales_female = 0
-    Accounting_male = 0; Accounting_female = 0
-
-    for employee in Employees:
-        if employee.section == "Admin":
-            if employee.male is True:
-                Admin_male += 1
-            else:
-                Admin_female += 1
-
-        elif employee.section == "IT":
-            if employee.male is True:
-                IT_male += 1
-            else:
-                IT_female += 1
-
-        elif employee.section == "HR":
-            if employee.male is True:
-                HR_male += 1
-            else:
-                HR_female += 1
-
-        elif employee.section == "Sales":
-            if employee.male is True:
-                Sales_male += 1
-            else:
-                Sales_female += 1
-
-        else:
-            #Accounting
-            if employee.male is True:
-                Accounting_male += 1
-            else:
-                Accounting_female += 1
-    
-    #tuples for each section: numbers of males, numbers of females, number of employees per section
-    Admin = (Admin_male, Admin_female, Admin_male+Admin_female)
-    IT = (IT_male, IT_female, IT_male+IT_female)
-    HR = (HR_male, HR_female, HR_male+HR_female)
-    Sales = (Sales_male, Sales_female, Sales_male+Sales_female)
-    Accounting = (Accounting_male, Accounting_female, Accounting_male+Accounting_female)
-
-    return [Admin, IT, HR, Sales, Accounting]
-
-
 
 def addEmployee():    
 
@@ -211,3 +124,93 @@ def changeSection():
     print("\nEmployee Section has been updated Successfully.\n")    
     for obj in Employees:
         print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+
+
+def salariesAverage():
+    Admin_average = 0; Admin_count = 0
+    IT_average = 0; IT_count = 0
+    HR_average = 0; HR_count = 0
+    Sales_average = 0; Sales_count = 0
+    Accounting_average = 0; Accounting_count = 0
+
+    for employee in Employees:
+        if employee.section == "Admin":
+            Admin_average += employee.salary
+            Admin_count += 1
+
+        elif employee.section == "IT":
+            IT_average += employee.salary
+            IT_count += 1
+
+        elif employee.section == "HR":
+            HR_average += employee.salary
+            HR_count += 1
+
+        elif employee.section == "Sales":
+            Sales_average += employee.salary
+            Sales_count += 1
+
+        else:
+            #Accounting
+            Accounting_average = employee.salary
+            Accounting_count += 1
+    
+    Admin_average = Admin_average / Admin_count
+    IT_average = IT_average / IT_count
+    HR_average = HR_average / HR_count
+    Sales_average = Sales_average / Sales_count
+    Accounting_average = Accounting_average / Accounting_count
+
+    return [Admin_average, IT_average, HR_average, Sales_average, Accounting_average]
+
+
+def sectionsSummary():
+    Admin_male = 0; Admin_female = 0
+    IT_male = 0; IT_female = 0
+    HR_male = 0; HR_female = 0
+    Sales_male = 0; Sales_female = 0
+    Accounting_male = 0; Accounting_female = 0
+
+    for employee in Employees:
+        if employee.section == "Admin":
+            if employee.male is True:
+                Admin_male += 1
+            else:
+                Admin_female += 1
+
+        elif employee.section == "IT":
+            if employee.male is True:
+                IT_male += 1
+            else:
+                IT_female += 1
+
+        elif employee.section == "HR":
+            if employee.male is True:
+                HR_male += 1
+            else:
+                HR_female += 1
+
+        elif employee.section == "Sales":
+            if employee.male is True:
+                Sales_male += 1
+            else:
+                Sales_female += 1
+
+        else:
+            #Accounting
+            if employee.male is True:
+                Accounting_male += 1
+            else:
+                Accounting_female += 1
+    
+    #tuples for each section: numbers of males, numbers of females, number of employees per section
+    Admin = (Admin_male, Admin_female, Admin_male+Admin_female)
+    IT = (IT_male, IT_female, IT_male+IT_female)
+    HR = (HR_male, HR_female, HR_male+HR_female)
+    Sales = (Sales_male, Sales_female, Sales_male+Sales_female)
+    Accounting = (Accounting_male, Accounting_female, Accounting_male+Accounting_female)
+
+    return [Admin, IT, HR, Sales, Accounting]
+
+
+
