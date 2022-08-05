@@ -22,21 +22,23 @@ option = 0
 while option is not 6:
     print("\n\n=======================================")
     print("Select an option: ")
-    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. Change employee's section\n\t4. Salaries average\n\t5. Sections summary\n\t6. Exit")
+    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. Change employee's salary\n\t4. Change employee's section\n\t5. Salaries averagecls\n\t6. Sections summary\n\t7. Exit")
     print("=======================================")
     option = int(input("input: "))
     
     if option == 1:
-        pass
+        logic.addEmployee()
     elif option == 2:
-        pass
+        logic.removeEmployee()
     elif option == 3:
-        pass
+        logic.changeSalary()
     elif option == 4:
-        displaySalariesAVG()
+        logic.changeSection()
     elif option == 5:
-        displaySummary()
+        displaySalariesAVG()
     elif option == 6:
+        displaySummary()
+    elif option == 7:
         break
     else:
         print("Choose one of the provided options")

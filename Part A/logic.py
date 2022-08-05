@@ -107,3 +107,107 @@ def sectionsSummary():
     Accounting = (Accounting_male, Accounting_female, Accounting_male+Accounting_female)
 
     return [Admin, IT, HR, Sales, Accounting]
+
+
+
+def addEmployee():    
+
+    print("\nCurrent Employees List:\n")
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+    
+    #while given id is not available 
+    idNOT = True
+    while idNOT is True :
+
+        idNOT = False
+        id = int(input("\nEnter ID of new Employee:\n"))
+        for emp in Employees:
+            if id == emp.id:          
+                print("ID already Exists.")
+                idNOT = True
+                break
+            
+
+ 
+    name = input("Enter Name of new Employee:\n")
+    salary = int(input("Enter Salary of new Employee:\n"))
+    section = input("Enter Section of new Employee:\n")
+    hoursPerWork = int(input("Enter Hours per Work of new Employee:\n"))
+    male = ""
+    
+    while True:
+        gender = input("Enter Gender of new Employee ['F' for female, 'M' for male]:")
+        if gender == "M".casefold():
+            male = True
+            break 
+        elif gender == "F".casefold(): 
+            male = False
+            break
+        else:
+            print("Kindly enter F or M")
+        
+
+    Employees.append(Employee(name,id,salary,section,hoursPerWork, male))
+    
+    print("Updated Employees List:\n")
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+
+
+
+def removeEmployee():
+    
+    print("\nCurrent Employees List:\n")
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+    
+    id = int(input("\nPlease enter ID of Employee to Remove:\n"))
+
+    for emp in Employees:
+        if id == emp.id:
+            Employees.remove(emp)
+    
+    print("Updated Employees List:\n")
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+
+
+def changeSalary():
+    print("Employee list before updation: \n")
+    
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)    
+
+    id = int(input("Enter ID of Employee to change his/her Salary:"))
+
+    for emp in Employees:
+        if id == emp.id:
+            new_salary = input("Enter new Salary:")
+            emp.salary = new_salary       
+    
+    print("Employee information after updation:\n")
+
+    print("\nEmployee Salary has been updated Successfully.\n")    
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
+
+
+def changeSection():
+    print("Employee list before updation: \n")
+    
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)    
+
+    id = int(input("Enter ID of Employee to change his/her Section:"))
+
+    for emp in Employees:
+        if id == emp.id:
+            new_section = input("Enter new Section:")
+            emp.section = new_section       
+    
+    print("Employee information after updation:\n")
+
+    print("\nEmployee Section has been updated Successfully.\n")    
+    for obj in Employees:
+        print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
