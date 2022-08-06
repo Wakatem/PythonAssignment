@@ -17,7 +17,6 @@ def passwordGenerator():
     return password
 
 
-
 def encrypted(password):
     encrypted = ""
 
@@ -37,6 +36,7 @@ def storeCredentials(username, password, dateOfRegistration, latestLogin):
     file.write(username+";"+password+";"+dateOfRegistration+";"+latestLogin+"\n")
     file.close()
     
+
 def checkExistingUsername(username):
     file = open("database.txt", "r")
     i = 0
@@ -47,6 +47,7 @@ def checkExistingUsername(username):
             return i  #username already exists
         i += 1
     return False #username does not exist
+
 
 def updateRecord(index, latestLogin):
     file1 = open("database.txt",'r')
