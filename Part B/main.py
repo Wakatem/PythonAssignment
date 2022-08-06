@@ -21,6 +21,7 @@ def register():
     while True:
         username = input("Enter your username: ")
 
+        #check username length
         if len(username) < 4:
             print("Enter a username of minimum 4 characters")
         
@@ -33,8 +34,8 @@ def register():
             latestLogin = dateOfRegistration
             logic.storeCredentials(username, encryptedPassword, dateOfRegistration, latestLogin)
         
+            #display password
             print("Your password is:", randomPassword, " |  (This password is shown for one minute)")
-            #while still not a minute passed
             delay(60, "30 seconds passed")
         
             print("One minute passed. Going back to menu.")
