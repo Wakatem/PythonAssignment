@@ -10,8 +10,13 @@ def displaySalariesAVG():
           "Accounting Average Salary: ", str(avgs[4]), " | ")
 
 def displaySummary():
+    #get number of employees, number of male and females per section
     Admin, IT, HR, Sales, Accounting = logic.sectionsSummary()
-    averages = logic.salariesAverage()
+    
+    #list of average salary in all sections (as integers)
+    averages = [ int(average) for average in logic.salariesAverage()]
+    
+    #calculate total average salary of all sections
     sectionsAverage = 0
     for average in averages:
         sectionsAverage += average
@@ -29,6 +34,7 @@ def displaySummary():
 
 option = 0
 
+#User Menu
 while option is not 6:
     print("\n\n=======================================")
     print("Select an option: ")
