@@ -106,10 +106,9 @@ def displaySummary():
 
 
 
-option = 0
-
 #User Menu
-while option is not 8:
+option = 0
+while True:
     print("\n\n=======================================")
     print("Select an option: ")
     print("\t1. Add an employee\n\t2. Remove an employee\n\t3. View list of employees\n\t4. Change employee's salary\n\t5. Change employee's section\n\t6. Salaries average\n\t7. Sections summary\n\t8. Exit")
@@ -130,5 +129,7 @@ while option is not 8:
         displaySalariesAVG()
     elif option == 7:
         displaySummary()
+    elif option == 8:
+        break
     else:
         print("Choose one of the provided options")
