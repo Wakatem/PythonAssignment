@@ -1,8 +1,12 @@
 import random
 
-#create database file
-open("database.txt", "w")
-
+#create database file if non-existent
+try:
+    open("database.txt", "r") 
+except FileNotFoundError:
+    #create file
+    open("database.txt", "w")
+    
 #generate password with range of capital letters and small letters and some symbols
 def passwordGenerator():
     password = ""
@@ -28,7 +32,7 @@ def encrypted(password):
 
 def storeCredentials(username, password, dateOfRegistration, latestLogin):
     file = open("database.txt", "a")
-    file.write(username+":"+password+":"+dateOfRegistration+":"+latestLogin)
+    file.write(username+":"+password+":"+dateOfRegistration+":"+latestLogin+"\n")
     file.close()
     
 def checkExistingUsername(username):
