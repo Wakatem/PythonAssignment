@@ -1,37 +1,76 @@
 import logic
 
-
-def checkSection():
-
-    matchingID = False
-    matchingSection = False
-
-    while matchingID is False:
+def addEmployee():
+    
+    #while given id is not available 
+    idExists = True
+    while idExists is True :
         try:
-            id = int(input("Enter ID of Employee to change his/her Section:"))
+            id = int(input("\nKindly enter id of new employee containing 6 digits:\n"))
 
+            #Check to accept only ID of 6 digits
+            if len(str(id)) != 6:
+                print("ID not accepted.")
+
+
+            #Check if id already exists
+            pos = 0
             for emp in logic.Employees:
-                if id == emp.id:
-                    matchingID = True
+                if id == emp.id:          
+                    print("ID already Exists.")
+                    idExists = True
+                    break
+                pos += 1
             
-            if matchingID is False:
-                print("ID not found.")
+            #Given id is new
+            idExists = False
+            logic.addEmployee(id)
 
         except ValueError:
-            print("Enter an ID containing integers only.")
+            print("Enter an ID containing integers only.")   
+
+
+
+def removeEmployee():
+    empPos = logic.getID("\nEnter ID of Employee to Remove:\n")
+    logic.removeEmployee(empPos)
+
+
+
+def checkSalary():
+    empPos = logic.getID("Enter ID of Employee to change his/her Salary:")
+
+    new_salary = 0
+    while True:
+        try:
+            new_salary = int(input("Enter new Salary:"))
+            break
+        except ValueError:
+            print("Enter a salary of digits only")
+    
+
+    #if both inputs are valid
+    logic.changeSalary(empPos, new_salary)
+
+
+def checkSection():
+    empPos = logic.getID("Enter ID of Employee to change his/her Section:")
+
+    new_section = ""
+    matchingSection = False
 
     while matchingSection is False:
         new_section = input("Enter new Section:")
 
         for section in logic.sections:
             if new_section == section:
-                logic.changeSection(id,new_section)
                 matchingSection = True
         
         if matchingSection is False:
             print("Section does not exist.")
 
-
+    #if both inputs are valid
+    logic.changeSection(empPos, new_section)
 
 
 
@@ -42,6 +81,7 @@ def displaySalariesAVG():
           "HR Average Salary:", str(avgs[2]), " | ",
           "Sales Average Salary:", str(avgs[3]), " | ",
           "Accounting Average Salary: ", str(avgs[4]), " | ")
+
 
 def displaySummary():
     #get number of employees, number of male and females per section
@@ -69,26 +109,26 @@ def displaySummary():
 option = 0
 
 #User Menu
-while option is not 6:
+while option is not 8:
     print("\n\n=======================================")
     print("Select an option: ")
-    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. Change employee's salary\n\t4. Change employee's section\n\t5. Salaries average\n\t6. Sections summary\n\t7. Exit")
+    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. View list of employees\n\t4. Change employee's salary\n\t5. Change employee's section\n\t6. Salaries average\n\t7. Sections summary\n\t8. Exit")
     print("=======================================")
     option = int(input("input: "))
     
     if option == 1:
-        logic.addEmployee()
+        addEmployee()
     elif option == 2:
-        logic.removeEmployee()
+        removeEmployee()
     elif option == 3:
-        logic.changeSalary()
+        logic.viewEmployeeList()
     elif option == 4:
-        checkSection()
+        checkSalary()
     elif option == 5:
-        displaySalariesAVG()
+        checkSection()
     elif option == 6:
-        displaySummary()
+        displaySalariesAVG()
     elif option == 7:
-        break
+        displaySummary()
     else:
         print("Choose one of the provided options")

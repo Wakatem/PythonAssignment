@@ -26,26 +26,8 @@ Employees = [
 sections = ['Admin','IT','Sales','HR','Accounting']
 
 
-def addEmployee():    
-    
-    #while given id is not available 
-    idExists = True
-    while idExists is True :
-
-        idExists = False
-        id = int(input("\nEnter ID of new Employee:\n"))
-        for emp in Employees:
-            if id == emp.id:          
-                print("ID already Exists.")
-                idExists = True
-                break
-        
-    # Check to accept only ID of 6 digits
-    if len(str(id)) != 6:
-        print("ID not accepted.")
-        id = int(input("\nKindly enter an ID containing 6 digits:\n"))
-
-        
+def addEmployee(id):    
+     
     name = input("Enter Name of new Employee:\n")
     salary = int(input("Enter Salary of new Employee:\n"))
     section = input("Enter Section of new Employee:\n")
@@ -71,22 +53,8 @@ def addEmployee():
 
 
 
-def removeEmployee():
-
-    idExists = False
-    while idExists is False:
-
-        id = int(input("\nEnter ID of Employee to Remove:\n"))
-
-        for emp in Employees:
-            if id == emp.id:       
-                idExists = True
-                break
-        
-        if idExists is False:
-            print("Employee ID not found.")
-
-    Employees.remove(emp)  
+def removeEmployee(empPos):
+    Employees.pop(empPos)
     print("Employee Removed successfully.") 
 
 
@@ -96,24 +64,13 @@ def viewEmployeeList():
         print(obj.name,obj.id,obj.salary,obj.section,obj.hoursPerWork,obj.male)
 
 
-def changeSalary():
-
-    id = int(input("Enter ID of Employee to change his/her Salary:"))
-
-    for emp in Employees:
-        if id == emp.id:
-            new_salary = input("Enter new Salary:")
-            emp.salary = new_salary       
-
+def changeSalary(empPos, new_salary):
+    Employees[empPos].salary = new_salary
     print("\nEmployee Salary has been updated Successfully.\n")    
 
 
-def changeSection(id,new_section):
-
-    for emp in Employees:
-        if id == emp.id:
-            emp.section = new_section
-
+def changeSection(empPos,new_section):
+    Employees[empPos].section = new_section
     print("\nEmployee Section has been updated Successfully.\n")    
 
 
@@ -204,5 +161,28 @@ def sectionsSummary():
 
     return [Admin, IT, HR, Sales, Accounting]
 
+def getID(message):
+    matchingID = False
+    empPos = 0
 
+    while matchingID is False:
+            try:
+                id = int(input(message))
+
+                pos = 0
+                for emp in Employees:
+                    if id == emp.id:
+                        matchingID = True
+                        empPos = pos
+                        break
+                    pos += 1
+
+                if matchingID is False:
+                    print("ID not found.")
+
+            except ValueError:
+                print("Enter an ID containing integers only.")
+
+
+    return empPos
 
