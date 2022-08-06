@@ -62,6 +62,8 @@ while True:
             #login()
             pass
         elif option == 3:
+            print("Exiting Menu")
+            print("Thank you for using the program")
             break
         else:
             print("Choose one of the provided options")

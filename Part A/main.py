@@ -100,7 +100,7 @@ option = 0
 while True:
     print("\n\n=======================================")
     print("Select an option: ")
-    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. View list of employees\n\t4. Change employee's salary\n\t5. Change employee's section\n\t6. Salaries average\n\t7. Sections summary\n\t8. Exit")
+    print("\t1. Add an employee\n\t2. Remove an employee\n\t3. View list of employees\n\t4. Change employee's salary\n\t5. Change employee's section\n\t6. View Salaries average\n\t7. View Sections summary\n\t8. Exit")
     print("=======================================")
     option = int(input("input: "))
     
@@ -119,6 +119,8 @@ while True:
     elif option == 7:
         displaySummary()
     elif option == 8:
+        print("Exiting Menu")
+        print("Thank you for using the program")
         break
     else:
         print("Choose one of the provided options")
