@@ -1,6 +1,40 @@
 import logic
 
 
+def checkSection():
+
+    matchingID = False
+    matchingSection = False
+
+    while matchingID is False:
+        try:
+            id = int(input("Enter ID of Employee to change his/her Section:"))
+
+            for emp in logic.Employees:
+                if id == emp.id:
+                    matchingID = True
+            
+            if matchingID is False:
+                print("ID not found.")
+
+        except ValueError:
+            print("Enter an ID containing integers only.")
+
+    while matchingSection is False:
+        new_section = input("Enter new Section:")
+
+        for section in logic.sections:
+            if new_section == section:
+                logic.changeSection(id,new_section)
+                matchingSection = True
+        
+        if matchingSection is False:
+            print("Section does not exist.")
+
+
+
+
+
 def displaySalariesAVG():
     avgs = logic.salariesAverage()
     print("Admin Average Salary:", str(avgs[0]), " | ", 
@@ -43,7 +77,7 @@ while option is not 6:
     elif option == 3:
         logic.changeSalary()
     elif option == 4:
-        logic.changeSection()
+        checkSection()
     elif option == 5:
         displaySalariesAVG()
     elif option == 6:
