@@ -64,11 +64,11 @@ def checkSection():
 
 def displaySalariesAVG():
     avgs = logic.salariesAverage()
-    print("Admin Average Salary:", str(avgs[0]), " | ", 
-          "IT Average Salary:", str(avgs[1]), " | ", 
-          "HR Average Salary:", str(avgs[2]), " | ",
-          "Sales Average Salary:", str(avgs[3]), " | ",
-          "Accounting Average Salary: ", str(avgs[4]), " | ")
+    print("\nAdmin Average Salary:", str(int(avgs[0])), 
+          "\nIT Average Salary:   ", str(int(avgs[1])), 
+          "\nHR Average Salary:   ", str(int(avgs[2])),
+          "\nSales Average Salary:", str(int(avgs[3])),
+          "\nAccounting Average Salary: ", str(int(avgs[4])))
 
 
 def displaySummary():
