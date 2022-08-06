@@ -48,13 +48,30 @@ def login():
 
     while True:
         username = input("Enter username:")
-        value = logic.checkExistingUsername(username)
+        value = logic.checkExistingUsername(username) #if not false, value is an integer
 
         if value is not False:
             while True:
                 password = input("Enter password:")
-                if logic.login(value,password) is True:
+                recordIndex = logic.login(value,password) #if not false, recordIndex is an integer
+
+                if recordIndex is not False:
                     print("Login successful. \nWelcome to our program!")
+
+                    #display record
+                    record = logic.returnRecord(recordIndex)
+                    username, encryptedPassword, reg_date, latestLogin = record.split(";")
+                    print("Username:", username)
+                    print("Your Password:", password)
+                    print("Registration Date:", reg_date)
+                    print("Latest Login:", latestLogin)
+
+                    #get current login date
+                    loginDate = str(datetime.datetime.now())
+
+                    #update user record
+                    logic.updateRecord(recordIndex, loginDate)
+
                     break
 
                 elif logic.login(value,password) is False:
@@ -65,11 +82,6 @@ def login():
             print("Username does not exist!")
     
     
-
-
-
-
-
 
 #User Menu
 option = 0

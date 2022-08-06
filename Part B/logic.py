@@ -34,7 +34,7 @@ def encrypted(password):
 
 def storeCredentials(username, password, dateOfRegistration, latestLogin):
     file = open("database.txt", "a")
-    file.write(username+":"+password+":"+dateOfRegistration+":"+latestLogin+"\n")
+    file.write(username+";"+password+";"+dateOfRegistration+";"+latestLogin+"\n")
     file.close()
     
 def checkExistingUsername(username):
@@ -42,18 +42,43 @@ def checkExistingUsername(username):
     i = 0
     for line in file:
         #extract username from each user record
-        savedUsername = line.split(":")[0]
+        savedUsername = line.split(";")[0]
         if username == savedUsername:
             return i  #username already exists
         i += 1
     return False #username does not exist
 
-
-def login(value,password):
+def updateRecord(index, latestLogin):
     file1 = open("database.txt",'r')
-    record = file1.readlines()[value]
-    username, encryptedPassword, reg_date, latestLogin = record.split(":")
-    print (encryptedPassword,encrypted(password))
+    records = file1.readlines()
+    record = records[index].split(";")
+    
+    #update latestLogin element
+    record[3] = latestLogin
+
+    #update records
+    records[index] = record[0] + ";" + record[1] + ";" + record[2] + ";" + record[3] + "\n"
+    file1.close()
+
+    #update database file
+    file1 = open("database.txt", "w")
+    for record in records:
+        file1.write(record)
+
+    file.close()
+
+
+def returnRecord(index):
+    file1 = open("database.txt",'r')
+    record = file1.readlines()[index]
+    file1.close()
+    return record
+
+
+def login(index,password):
+    record = returnRecord(index)
+    username, encryptedPassword, reg_date, latestLogin = record.split(";")
+
     if encrypted(password) == encryptedPassword:
-        return True
+        return index
     return False
