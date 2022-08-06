@@ -2,10 +2,12 @@ import random
 
 #create database file if non-existent
 try:
-    open("database.txt", "r") 
+    file = open("database.txt", "r") 
+    file.close()
 except FileNotFoundError:
     #create file
-    open("database.txt", "w")
+    file = open("database.txt", "w")
+    file.close()
     
 #generate password with range of capital letters and small letters and some symbols
 def passwordGenerator():
@@ -37,10 +39,21 @@ def storeCredentials(username, password, dateOfRegistration, latestLogin):
     
 def checkExistingUsername(username):
     file = open("database.txt", "r")
+    i = 0
     for line in file:
         #extract username from each user record
         savedUsername = line.split(":")[0]
         if username == savedUsername:
-            return True #username already exists
+            return i  #username already exists
+        i += 1
     return False #username does not exist
 
+
+def login(value,password):
+    file1 = open("database.txt",'r')
+    record = file1.readlines()[value]
+    username, encryptedPassword, reg_date, latestLogin = record.split(":")
+    print (encryptedPassword,encrypted(password))
+    if encrypted(password) == encryptedPassword:
+        return True
+    return False

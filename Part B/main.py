@@ -44,6 +44,32 @@ def register():
             break
 
 
+def login():
+
+    while True:
+        username = input("Enter username:")
+        value = logic.checkExistingUsername(username)
+
+        if value is not False:
+            while True:
+                password = input("Enter password:")
+                if logic.login(value,password) is True:
+                    print("Login successful. \nWelcome to our program!")
+                    break
+
+                elif logic.login(value,password) is False:
+                    print("Wrong password!")
+            break
+
+        elif logic.checkExistingUsername(username) is False:
+            print("Username does not exist!")
+    
+    
+
+
+
+
+
 
 #User Menu
 option = 0
@@ -59,7 +85,7 @@ while True:
         if option == 1:
             register()
         elif option == 2:
-            #login()
+            login()
             pass
         elif option == 3:
             print("Exiting Menu")
