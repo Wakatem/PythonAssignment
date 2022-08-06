@@ -30,7 +30,7 @@ def addEmployee(id):
      
     name = input("Enter Name of new Employee:\n")
     salary = int(input("Enter Salary of new Employee:\n"))
-    section = input("Enter Section of new Employee:\n")
+    section = getSection("Enter Section of new Employee:\n")
     hoursPerWork = int(input("Enter Hours per Work of new Employee:\n"))
     male = ""
     
@@ -191,4 +191,22 @@ def getID(message):
 
     #return pos of employee in the list
     return empPos
+
+
+def getSection(message):
+    new_section = ""
+    matchingSection = False
+
+    while matchingSection is False:
+        new_section = input(message)
+
+        for section in sections:
+            if new_section == section:
+                matchingSection = True
+        
+        if matchingSection is False:
+            print("Section does not exist.")
+    
+    return new_section
+
 

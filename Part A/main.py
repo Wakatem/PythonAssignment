@@ -55,19 +55,7 @@ def checkSalary():
 
 def checkSection():
     empPos = logic.getID("Enter ID of Employee to change his/her Section:")
-
-    new_section = ""
-    matchingSection = False
-
-    while matchingSection is False:
-        new_section = input("Enter new Section:")
-
-        for section in logic.sections:
-            if new_section == section:
-                matchingSection = True
-        
-        if matchingSection is False:
-            print("Section does not exist.")
+    new_section = logic.getSection("Enter new Section:")
 
     #if both inputs are valid
     logic.changeSection(empPos, new_section)
