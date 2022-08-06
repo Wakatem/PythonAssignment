@@ -96,6 +96,7 @@ def displaySummary():
         sectionsAverage += average
     sectionsAverage = int(sectionsAverage / len(averages))
 
+    #display table
     print("\t\tAdmin\t|\tIT\t|\tHR\t|\tSales\t|\tAccounting")
     print("NO of Males\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[0], IT[0], HR[0], Sales[0], Accounting[0]))
     print("NO of Females\t  {0}\t\t{1}\t\t{2}\t\t {3}\t\t    {4}".format(Admin[1], IT[1], HR[1], Sales[1], Accounting[1]))
@@ -133,3 +134,4 @@ while True:
         break
     else:
         print("Choose one of the provided options")
+

@@ -34,6 +34,7 @@ def addEmployee(id):
     hoursPerWork = int(input("Enter Hours per Work of new Employee:\n"))
     male = ""
     
+    #Get a valid gender input
     while True:
         gender = input("Enter Gender of new Employee ['F' for female, 'M' for male]:")
         if gender == "M".casefold():
@@ -46,6 +47,7 @@ def addEmployee(id):
             print("Kindly enter F or M")
         
 
+    #add employee to the list
     Employees.append(Employee(name,id,salary,section,hoursPerWork, male))
     
     print("Employee added successfully.\n")
@@ -82,6 +84,7 @@ def salariesAverage():
     Sales_average = 0; Sales_count = 0
     Accounting_average = 0; Accounting_count = 0
 
+    #iterate through the employees list and calculate salary average and number of employees per section respectively
     for employee in Employees:
         if employee.section == "Admin":
             Admin_average += employee.salary
@@ -104,6 +107,7 @@ def salariesAverage():
             Accounting_average = employee.salary
             Accounting_count += 1
     
+    #get total average for each section
     Admin_average = Admin_average / Admin_count
     IT_average = IT_average / IT_count
     HR_average = HR_average / HR_count
@@ -165,6 +169,7 @@ def getID(message):
     matchingID = False
     empPos = 0
 
+    #Keep asking for an existing id
     while matchingID is False:
             try:
                 id = int(input(message))
@@ -184,5 +189,6 @@ def getID(message):
                 print("Enter an ID containing integers only.")
 
 
+    #return pos of employee in the list
     return empPos
 
